@@ -90,20 +90,23 @@ h1 {
   font-size: 36px;
   line-height: 48px;
   margin: 0 0 24px;
-  font-weight: 200;
 }
 
 h2 {
   font-size: 32px;
   line-height: 40px;
   margin: 0 0 24px;
-  font-weight: 200;
 }
 
 h3 {
   font-size: 26px;
   line-height: 32px;
   margin: 0 0 24px;
+}
+
+h1,
+h2,
+h3 {
   font-weight: 200;
 }
 
@@ -220,7 +223,7 @@ a:focus {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-width: 90em; /* 90 * 16px = 1440px */
+  max-width: 56.4em; /* 56.4 * 20px = 1128px */
 }
 
 /*
@@ -343,6 +346,27 @@ a:focus {
 /*------------------------------------*\
   #COMPONENTS
 \*------------------------------------*/
+
+/*
+    Component: Logo
+    ---
+    Website main logo
+*/
+
+.c-logo {
+  height: 32px;
+}
+
+.c-logo__symbol {
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+    .c-logol {
+      height: 40px;
+    }
+}
+
 
 /*------------------------------------*\
   #UTILITIES
