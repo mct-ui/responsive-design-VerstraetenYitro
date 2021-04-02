@@ -19,6 +19,7 @@
   font-weight: 600;
   src: url('../fonts/hkgrotesk-medium-webfont.woff2') format('woff2'), url('../fonts/hkgrotesk-medium-webfont.woff') format('woff');
 }
+
 /*------------------------------------*\
   #GENERIC
 \*------------------------------------*/
@@ -32,7 +33,7 @@
 html {
   font-size: 16px;
   line-height: 1.5;
-  font-family: 'HK Grotesk Web', Helvetica, arial, sans-serif;
+  font-family: 'HK Grotesk Web', sans-serif;
   color: #202024;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -43,6 +44,13 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 20px;
+    line-height: 1.6;
+  }
 }
 
 /*
@@ -86,6 +94,12 @@ img {
     Default markup for typographic elements
 */
 
+h1,
+h2,
+h3 {
+  font-weight: 200;
+}
+
 h1 {
   font-size: 36px;
   line-height: 48px;
@@ -102,12 +116,6 @@ h3 {
   font-size: 26px;
   line-height: 32px;
   margin: 0 0 24px;
-}
-
-h1,
-h2,
-h3 {
-  font-weight: 200;
 }
 
 h4,
@@ -172,12 +180,12 @@ a {
 
 a:visited,
 a:active {
-  color: #202024;
+  color: #5051db;
 }
 
 a:hover,
 a:focus {
-  color: #202024;
+  color: #3e3ea8;
 }
 
 /*------------------------------------*\
@@ -191,8 +199,13 @@ a:focus {
 */
 
 .o-row {
+  position: relative;
   padding: 24px 24px 0;
   display: flow-root;
+}
+
+.o-row--gradient {
+  background: linear-gradient();
 }
 
 /* size modifiers */
@@ -207,10 +220,20 @@ a:focus {
     padding-right: 48px;
   }
 
+  .o-row--md {
+    padding-top: 48px;
+    padding-bottom: 24px;
+  }
+
   .o-row--lg {
     padding-top: 72px;
     padding-bottom: 48px;
   }
+}
+
+/* color modifiers */
+.o-row--neutral-x-light {
+  background: #f7f7f7;
 }
 
 /*
@@ -349,94 +372,41 @@ a:focus {
     Small reusable object to remove default list styling from lists
 */
 
-.o-list {
+.o-list-reset {
   list-style: none;
   padding: 0;
+}
+
+/*
+    Objects: section
+    ---
+    Creates vertical whitespace between adjacent sections inside a row
+*/
+
+.o-section {
+  display: flow-root;
+}
+
+.o-section + .o-section {
+  margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+  .o-section--lg + .o-section--lg,
+  .o-section--xl + .o-section--xl {
+    margin-top: 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .o-section--xl + .o-section--xl {
+    margin-top: 72px;
+  }
 }
 
 /*------------------------------------*\
   #COMPONENTS
 \*------------------------------------*/
-
-/*
-    Component: Logo
-    ---
-    Website main logo
-*/
-
-.c-logo {
-  height: 32px;
-}
-
-.c-logo__symbol {
-  height: 100%;
-}
-
-@media (min-width: 768px) {
-  .c-logol {
-    height: 40px;
-  }
-}
-
-/*
-    Component: Nav
-    ---
-    Main navigation of the site
-*/
-
-.c-nav {
-  font-size: 18px;
-  line-height: 24px;
-}
-
-.c-nav__link {
-  text-decoration: none;
-  font-weight: 400;
-  padding: 8px 0;
-  display: block;
-}
-
-.c-nav__link,
-.c-nav__link:visited,
-.c-nav__link:active {
-  color: #202024;
-}
-
-.c-nav__link:hover,
-.c-nav__link:focus {
-  color: #5051db;
-}
-
-@media (min-width: 768px) {
-  .c-nav__list {
-    display: flex;
-    gap: 16px;
-  }
-
-  .c-nav__link {
-  }
-}
-
-.c-nav--meta {
-  font-size: 16px;
-}
-
-.c-nav__link--meta,
-.c-nav__link--meta:visited,
-.c-nav__link--meta:active {
-  color: #6c6c75;
-}
-
-.c-nav__link:hover,
-.c-nav__link:focus {
-  color: #5051db;
-}
-
-.is-selected .c-nav__link,
-.c-nav__link:hover,
-.c-nav__link:focus {
-  color: #5051db;
-}
 
 /*
     Component: header
@@ -459,9 +429,228 @@ a:focus {
   }
 }
 
+/*
+    Component: Logo
+    ---
+    Website main logo
+*/
+
+.c-logo {
+  height: 32px;
+}
+
+.c-logo__symbol {
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .c-logo {
+    height: 40px;
+  }
+}
+
+/*
+    Component: Nav
+    ---
+    Main navigation of the site
+*/
+
+.c-nav {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.c-nav--meta {
+  font-size: 16px;
+}
+
+.c-nav__link {
+  text-decoration: none;
+  padding: 8px 0;
+  display: block;
+}
+
+.c-nav__link,
+.c-nav__link:visited,
+.c-nav__link:active {
+  color: #202024;
+}
+
+.c-nav__link--meta,
+.c-nav__link--meta:visited,
+.c-nav__link--meta:active {
+  color: #6c6c75;
+}
+
+.is-selected .c-nav__link,
+.c-nav__link:hover,
+.c-nav__link:focus {
+  color: #5051db;
+}
+
+@media (min-width: 768px) {
+  .c-nav__list {
+    display: flex;
+    gap: 32px;
+  }
+}
+
+/*
+    Component: Lead
+    ---
+    Lead type treatments to style everything that differs from standard typography elements
+*/
+
+.c-lead {
+  font-weight: 200;
+}
+
+.c-lead--lg {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.c-lead--xl {
+  font-size: 26px;
+  line-height: 32px;
+}
+
+.c-lead--xxl {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.c-lead--xxxl {
+  font-size: 36px;
+  line-height: 48px;
+}
+
+@media (min-width: 768px) {
+  .c-lead--lg {
+    font-size: 23px;
+    line-height: 32px;
+  }
+
+  .c-lead--xl {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .c-lead--xxl {
+    font-size: 41px;
+    line-height: 48px;
+  }
+
+  .c-lead--xxxl {
+    font-size: 52px;
+    line-height: 64px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .c-lead--lg {
+    font-size: 26px;
+    line-height: 36px;
+  }
+
+  .c-lead--xl {
+    font-size: 36px;
+    line-height: 48px;
+  }
+
+  .c-lead--xxl {
+    font-size: 52px;
+    line-height: 64px;
+  }
+
+  .c-lead--xxxl {
+    font-size: 66px;
+    line-height: 72px;
+  }
+}
+
+/*
+    Component: CTA link
+    ---
+    Small cta link with custom animation
+*/
+
+.c-link-cta {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  padding: 4px 0;
+  transition: color 0.175s ease-in;
+}
+
+.c-link-cta,
+.c-link-cta:visited,
+.c-link-cta:active {
+  color: #7373f5;
+}
+
+.c-link-cta::before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #7373f5;
+
+  transform: scaleX(0.5);
+  transform-origin: left;
+  transition-property: transform background-color;
+  transition-duration: .175s;
+  transition-timing-function: ease-in;
+}
+
+.c-link-cta:hover {
+  color: #3e3ea8;
+}
+
+.c-link-cta:hover::before {
+  transform: scaleX(1);
+  background-color: #3e3ea8;
+}
+
 /*------------------------------------*\
   #UTILITIES
 \*------------------------------------*/
+
+/*
+    Utilities: spacing
+    ---
+    Utility classes to put specific margins and paddings onto elements
+*/
+
+.u-pt-clear {
+  padding-top: 0 !important;
+}
+
+.u-pt-xs {
+  padding-top: 8px !important;
+}
+
+.u-pt-sm {
+  padding-top: 16px !important;
+}
+
+.u-mb-clear {
+  margin-bottom: 0 !important;
+}
+
+.u-mb-xs {
+  margin-bottom: 8px !important;
+}
+
+.u-mb-sm {
+  margin-bottom: 16px !important;
+}
 
 /*
     Utilities: max-width
@@ -694,6 +883,24 @@ a:focus {
   .u-5-of-6-bp4 {
     flex-basis: calc(100% / 6 * 5) !important;
   }
+}
+
+/*
+    Utilities: color
+    ---
+    Utility classes to put specific colors onto elements
+*/
+
+.u-color-primary-light {
+  color: #7373f5 !important;
+}
+
+.u-color-primary-base {
+  color: #5051db !important;
+}
+
+.u-color-primary-dark {
+  color: #3e3ea8 !important;
 }
 
 /*------------------------------------*\
