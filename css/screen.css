@@ -205,7 +205,8 @@ a:focus {
 }
 
 .o-row--gradient {
-  background: linear-gradient();
+  background: linear-gradient(to right, #5051db 0%, #3887f7 100%);
+  color: #fff;
 }
 
 /* size modifiers */
@@ -605,7 +606,7 @@ a:focus {
   transform: scaleX(0.5);
   transform-origin: left;
   transition-property: transform background-color;
-  transition-duration: .175s;
+  transition-duration: 0.175s;
   transition-timing-function: ease-in;
 }
 
@@ -616,6 +617,22 @@ a:focus {
 .c-link-cta:hover::before {
   transform: scaleX(1);
   background-color: #3e3ea8;
+}
+
+/* inversed */
+
+.c-link-cta--inverse,
+.c-link-cta--inverse:visited,
+.c-link-cta--inverse:active {
+  color: #fff;
+}
+
+.c-link-cta--inverse::after {
+  background-color: #fff;
+}
+
+.c-link-cta--inverse:hover::after {
+  background-color: #fff;
 }
 
 /*------------------------------------*\
