@@ -570,6 +570,66 @@ a:focus {
   }
 }
 
+
+/*
+    Component: footer
+    ---
+    Main footer of the website
+*/
+
+.c-footer {
+  font-size: 18px;
+}
+
+.c-footer__logo {
+}
+
+.c-footer__nav {
+  text-decoration: none;
+  color: #3c3c42;
+  display: block;
+  list-style: none;
+}
+
+.c-footer__list{
+  display: flex;
+  gap: 32px;
+}
+
+.c-footer__item{
+  color: #3c3c42;
+}
+
+@media (min-width: 768px) {
+  .c-footer {
+  }
+
+  .c-footer__logo {
+  }
+
+  .c-footer__nav {
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .c-footer {
+    font-size: 18px;
+  }
+
+  .c-footer__logo {
+  }
+
+  .c-footer__logo .c-logo {
+  }
+
+  .c-footer__nav {
+    text-decoration: none;
+    color: #3c3c42;
+  }
+}
+
+
 /*
     Component: CTA link
     ---
